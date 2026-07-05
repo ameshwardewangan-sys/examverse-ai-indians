@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+// Aapki banayi hui saari screens yahan import ho rahi hain
+import 'screens/SecureLoginScreen.dart';
 import 'screens/AdminDashboardScreen.dart';
 import 'screens/GenAIQuizScreen.dart';
 import 'screens/ChillZoneScreen.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   // UI ko smooth aur status bar ko transparent karne ke liye
@@ -35,7 +38,8 @@ class ExamVerseSuperApp extends StatelessWidget {
           centerTitle: true,
         ),
       ),
-      home: const DashboardShell(),
+      // APP SABSE PEHLE LOGIN SCREEN PAR JAYEGA 👇
+      home: const SecureLoginScreen(),
     );
   }
 }
@@ -50,19 +54,12 @@ class DashboardShell extends StatefulWidget {
 class _DashboardShellState extends State<DashboardShell> {
   int _selectedIndex = 0;
 
-  /final List<Widget> _modules = [
-    const Center(child: Text('🧠 AI Anticipatory Home', style: TextStyle(fontSize: 18, color: Colors.white70))),
-    const GenAIQuizScreen(), // Step 3 se
-    const Center(child: Text('🎫 Super-X Utilities', style: TextStyle(fontSize: 18, color: Colors.white70))), // Ise baad me link karenge
-    const ChillZoneScreen(), // YAHAN CHILL ZONE LAGA DIYA HAI 👇
-  ];
-  
-  Advanced Modules List
+  // Final List: Yahan saari screens properly link ho gayi hain!
   final List<Widget> _modules = [
     const Center(child: Text('🧠 AI Anticipatory Home\n(Daily GK, Revisions & Voice Mode)', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.white70))),
-    const Center(child: Text('📚 Prep Universe\n(UPSC, SSC, AR Treasure Hunt)', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.white70))),
+    const GenAIQuizScreen(), // 2nd Button (Prep Zone)
     const Center(child: Text('🎫 Super-X Utilities\n(Train/Flight Tracking & Doc AI)', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.white70))),
-    const Center(child: Text('🍿 Infinity Chill\n(Educational Reels, Live Matches)', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.white70))),
+    const ChillZoneScreen(), // 4th Button (Chill Zone)
   ];
 
   @override
@@ -76,10 +73,14 @@ class _DashboardShellState extends State<DashboardShell> {
         actions: [
           IconButton(
             icon: const Icon(Icons.shield_moon_outlined, color: Color(0xFF00FFC6)),
-            onPressed: () {
-              // God Mode / Admin Login triggers here
-            },
             tooltip: 'God Mode (Admin)',
+            onPressed: () {
+              // God Mode open karne ka code 👇
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AdminDashboardScreen()),
+              );
+            },
           )
         ],
       ),
@@ -106,7 +107,7 @@ class _DashboardShellState extends State<DashboardShell> {
             BottomNavigationBarItem(icon: Icon(Icons.auto_awesome), label: 'AI Home'),
             BottomNavigationBarItem(icon: Icon(Icons.school_rounded), label: 'Prep Zone'),
             BottomNavigationBarItem(icon: Icon(Icons.confirmation_number_outlined), label: 'Super-X'),
-            BottomNavigationBarItem(icon: Icon(Icons.play_circle_filled_rounded), label: 'Chill'),
+            BottomNavigationBarItem(icon: Icon(Icons.play_circle_filled_rounded), label: 'Chill'), // Typo fix kar diya
           ],
         ),
       ),
