@@ -81,7 +81,11 @@ class _SecureLoginScreenState extends State<SecureLoginScreen> {
               // Login Button
               ElevatedButton(
                 onPressed: () {
-                  // Call Backend API
+                  // 👇 YAHAN SE DASHBOARD PAR JAYEGA 👇
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const DashboardShell()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF6C63FF),
