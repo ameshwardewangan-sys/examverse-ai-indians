@@ -1,3 +1,4 @@
+import 'screens/GenAIQuizScreen.dart';
 import 'screens/ChillZoneScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -48,7 +49,14 @@ class DashboardShell extends StatefulWidget {
 class _DashboardShellState extends State<DashboardShell> {
   int _selectedIndex = 0;
 
-  // Advanced Modules List
+  /final List<Widget> _modules = [
+    const Center(child: Text('🧠 AI Anticipatory Home', style: TextStyle(fontSize: 18, color: Colors.white70))),
+    const GenAIQuizScreen(), // Step 3 se
+    const Center(child: Text('🎫 Super-X Utilities', style: TextStyle(fontSize: 18, color: Colors.white70))), // Ise baad me link karenge
+    const ChillZoneScreen(), // YAHAN CHILL ZONE LAGA DIYA HAI 👇
+  ];
+  
+  Advanced Modules List
   final List<Widget> _modules = [
     const Center(child: Text('🧠 AI Anticipatory Home\n(Daily GK, Revisions & Voice Mode)', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.white70))),
     const Center(child: Text('📚 Prep Universe\n(UPSC, SSC, AR Treasure Hunt)', textAlign: TextAlign.center, style: TextStyle(fontSize: 18, color: Colors.white70))),
